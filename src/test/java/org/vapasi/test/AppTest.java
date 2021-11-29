@@ -1,10 +1,11 @@
-package org.vapasi;
+package org.vapasi.test;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.*;
+import org.vapasi.core.BaseClassTest;
+import org.vapasi.pages.*;
 
-public class AppTest extends BaseClassTest{
+public class AppTest extends BaseClassTest {
 
     HomePage loggedSuccess = new HomePage(driver);
     CategorySelectPage selectCategory = new CategorySelectPage(driver);
@@ -16,13 +17,13 @@ public class AppTest extends BaseClassTest{
     OrderConfirmation confirmOrder = new OrderConfirmation(driver);
     //This is the test case which creates a new user then with same credentials adds a product and does checkout
     @Test
-    public void assertCart() {
+    public void createNewLoginUserAndOrder() {
         CreateNewUserLoginPage createLoginUser = new CreateNewUserLoginPage(driver);
         NewCustomerPage newLogin = new NewCustomerPage(driver);
 
         //Creating a new login user
         createLoginUser.createUser();
-        newLogin.createNewLoginCredentials("newUser2@testbackend.com","123456","123456");
+        newLogin.createNewLoginCredentials("newUser8@testbackend.com","123456","123456");
         Assert.assertEquals(loggedSuccess.verifyLogin(),"Welcome! You have signed up successfully.","The login message is not matching");
 
         //The new user selects the respective category and adds product
@@ -42,7 +43,7 @@ public class AppTest extends BaseClassTest{
 
      //Test for already logged user
      @Test
-    public void loginAndOrder(){
+    public void oldLoginIDAndOrder(){
 
         LoginPage login = new LoginPage(driver);
 

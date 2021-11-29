@@ -1,28 +1,27 @@
-package pages;
+package org.vapasi.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutPayment {
+public class CheckoutDelivery {
 
     WebDriver driver;
 
-    @FindBy(css = "input[id='order_payments_attributes__payment_method_id_3']")
-    WebElement paymentOption;
+    @FindBy(css = "input[data-cost = '$5.00']")
+    WebElement shipmentType;
 
-    @FindBy(css="input[value='Save and Continue']")
+    @FindBy(css = "input[value='Save and Continue']")
     WebElement saveBtn;
 
-    public CheckoutPayment(WebDriver driver){
+    public CheckoutDelivery(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
-    public void choosePayment(){
-        paymentOption.click();
+    public void saveShipment(){
+        shipmentType.click();
         saveBtn.click();
-
     }
+
 }
